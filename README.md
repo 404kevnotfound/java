@@ -17,8 +17,8 @@ Code Example
 		}
 Motivation
 Well during a work party we actually played Bunco with like 40 people and it got crazy, so I thought it would be really fun to make the game. 
-Installation
 
+Installation
 Basically all you have to do is to make sure that all the files are in one folder only. Then You will run the one the says GameFrame.
 
 API Reference
