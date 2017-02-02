@@ -12,6 +12,7 @@ import java.applet.Applet;
 import java.applet.AudioClip; 
 import java.io.*;
 import javax.imageio.*;
+import java.util.concurrent.*;
 
 public class GameFrame extends JFrame implements ActionListener
 {
@@ -124,6 +125,7 @@ public class GameFrame extends JFrame implements ActionListener
 		lab.setHorizontalAlignment(lab.CENTER); 
 		
 		panel1.add(player4); 
+		player4.setForeground(Color.WHITE); 
 		player4.setHorizontalAlignment(player4.CENTER); 
 		
 		panel1.add(lab9); 
@@ -131,16 +133,20 @@ public class GameFrame extends JFrame implements ActionListener
 		panel2.add(lab2); 
 		lab2.setHorizontalAlignment(lab2.CENTER); 
 		panel2.add(player3);
+		player3.setForeground(Color.WHITE); 
 		player3.setHorizontalAlignment(player3.CENTER); 
 		panel2.add(lab10); 
 		lab10.setHorizontalAlignment(lab10.CENTER); 
 		panel3.add(score);
+		score.setForeground(Color.WHITE);
 		score.setHorizontalAlignment(score.CENTER); 
 		panel3.add(bunco); 
+		bunco.setForeground(Color.WHITE);
 		bunco.setHorizontalAlignment(bunco.CENTER); 
 		panel4.add(play); 
 		play.addActionListener(this);
 		panel5.add(player2); 
+		player2.setForeground(Color.WHITE);
 		player2.setHorizontalAlignment(player2.CENTER); 
 		
 		//THIS IS FOR THE DICES!!
@@ -152,6 +158,7 @@ public class GameFrame extends JFrame implements ActionListener
 		panel6.add(block3);
 		panel5.add(player1); 
 		player1.setHorizontalAlignment(player1.CENTER); 
+		player1.setForeground(Color.WHITE);
 		exit.addActionListener(this); 
 		instr.addActionListener(this); 
 		repaint();
@@ -176,7 +183,7 @@ public class GameFrame extends JFrame implements ActionListener
 		if(source == play)
 		{
 			if(rolls < NUMBERTURN)
-			{
+			{	
 				playersTurns(players); 
 				rolls += 1; 
 			 }
@@ -200,6 +207,7 @@ public class GameFrame extends JFrame implements ActionListener
 		this.ran1 = (int)(Math.random()* 10000) % 6 + 1;  
 		return ran1;
 		
+		
 	}
 	public int roll2()
 	{ 
@@ -218,149 +226,222 @@ public class GameFrame extends JFrame implements ActionListener
 		if(dice1 == 1)
 		{
 			block1.setIcon(die1);
+			repaint();
+			revalidate();
 		}
 		else if(dice1 == 2)
 		{
 			block1.setIcon(die2);
+			repaint();
+			revalidate();
 		}
 		else if(dice1 == 3)
 		{
 			block1.setIcon(die3);
+			repaint();
+			revalidate();
 		}
 		else if(dice1 == 4)
 		{
 			block1.setIcon(die4);
+			repaint();
+			revalidate();
 		}
 		else if(dice1 == 5)
 		{
 			block1.setIcon(die5);
+			repaint();
+			revalidate();
 		}
 		else if(dice1 == 6)
 		{
 			block1.setIcon(die6);
+			repaint();
+			revalidate();
 		}
-		else if(dice2 == 1)
+		if(dice2 == 1)
 		{
 			block2.setIcon(die1); 
-	
+			repaint();
+			revalidate();
 		}
-		if(dice2 == 2)
+		else if(dice2 == 2)
 		{
 			block2.setIcon(die2); 
+			repaint();
+			revalidate();
 		}
 		else if(dice2 == 3)
 		{
 			block2.setIcon(die3); 
+			repaint();
+			revalidate();
 		}
 		else if(dice2 == 4)
 		{
 			block2.setIcon(die4); 
+			repaint();
+			revalidate();
 		}
 		else if(dice2 == 5)
 		{
 			block2.setIcon(die5); 
+			repaint();
+			revalidate();
 		}
 		else if(dice2 == 6)
 		{
 			block2.setIcon(die6); 
+			repaint();
+			revalidate();
 		}
 		if(dice3 == 1)
 		{
 			block3.setIcon(die1);
+			repaint();
+			revalidate();
 		}
 		else if(dice3 == 2)
 		{
 			block3.setIcon(die2);
+			repaint();
+			revalidate();
 		}
 		else if(dice3 == 3)
 		{
 			block3.setIcon(die3);
+			repaint();
+			revalidate();
 		}
 		else if(dice3 == 4)
 		{
 			block3.setIcon(die4);
+			repaint();
+			revalidate();
 		}
 		else if(dice3 == 5)
 		{
 			block3.setIcon(die5);
+			repaint();
+			revalidate();
 		}
 		else if(dice3 == 6)
 		{
 			block3.setIcon(die6);
-		}	
+			repaint();
+			revalidate();
+		}
 	}
 	public void playersTurns(int player)
 		{
 			if(player < 5)
-				{		
+				{	
+	
 					dice1 = roll(); 
 					dice2 = roll2();
 					dice3 = roll3();
 					setIcons();
+
 					if(dice1 == rounds && dice2 == rounds && dice3 == rounds)//Bunco
 					{
+						try
+						{
+							
+							TimeUnit.SECONDS.sleep(1);
+							setIcons(); 
+							System.out.println(dice1); 
+							System.out.println(dice2); 
+							System.out.println(dice3); 
+						}
+						catch(InterruptedException e)
+						{
+							 System.out.println("Something went wrong");  
+						}	
+
 						if(player == 1)
 						{
 							player1Score += 20; 
 							
-							JOptionPane.showMessageDialog(null, "Congrats you rolled all 1's");
+							JOptionPane.showMessageDialog(null, "Congrats Player 1 rolled all 1's");
 						}
 						else if(player == 2)
 						{
 							player2Score += 20; 
 			
-							JOptionPane.showMessageDialog(null, "Congrats you rolled all 1's");
+							JOptionPane.showMessageDialog(null, "Congrats Player 2 rolled all 1's");
 						}
 						else if(player == 3)
 						{
 							player3Score += 20; 
 							
-							JOptionPane.showMessageDialog(null, "Congrats you rolled all 1's");
+							JOptionPane.showMessageDialog(null, "Congrats Player 3 rolled all 1's");
 						}
 						else if(player == 4)
 						{
 							player4Score += 20; 
 							
-							JOptionPane.showMessageDialog(null, "Congrats you rolled all 1's");
+							JOptionPane.showMessageDialog(null, "Congrats Player 4 rolled all 1's");
 						}
 						playersTurns(player);
+					
 					}// end of bunco statement.
 					else 
 					{
+
 						if(dice1 == rounds || dice2 == rounds || dice3 == rounds)
 						{
+							try
+							{
+								TimeUnit.SECONDS.sleep(1);
+								System.out.println(dice1); 
+								System.out.println(dice2); 
+								System.out.println(dice3); 
+								setIcons(); 							
+							}
+							catch(InterruptedException e)
+							{
+								 System.out.println("Something went wrong");  
+							}								
 							if(player == 1)
 							{
-								player1Score += 1 ; 
 							
+								player1Score += 1 ; 
 								pl1Score = Integer.toString(player1Score); 
 								pl1Bunco = Integer.toString(player1Bunco);
-								score.setText(pl1Score);
-								bunco.setText(pl1Bunco); 
+								score.setText("Your Score is "+ pl1Score);
+								bunco.setText("Buncos! "+ pl1Bunco); 
+					
 							}
 							else if(player == 2)
-							{
+							{	
+								
 								player2Score += 1; 
 								
 							}
 							else if(player == 3)
 							{
+								
 								player3Score += 1; 
 								
 								pl1Score = Integer.toString(player1Score); 
 								pl1Bunco = Integer.toString(player1Bunco);
-								score.setText(pl1Score);
-								bunco.setText(pl1Bunco); 
+								score.setText("Your Score is "+ pl1Score);
+								bunco.setText("Buncos! "+pl1Bunco); 
+							
 							}
 							else if(player == 4)
 							{
+							 
 								player4Score += 1; 
 								
 							}//end of which player to add a point too
-							playersTurns(player);// starts it over again. 
+							
+							playersTurns(player);// starts it over again.
+						 
 							
 						}else
-						{
+						{	
+													
 							repaint(); 
 							revalidate();
 							JOptionPane.showMessageDialog(null, "Player " +player+ " is over."); 
