@@ -67,6 +67,7 @@ public class GameFrame extends JFrame implements ActionListener
 	Icon die4 = new ImageIcon(getClass().getResource("four.png"));
 	Icon die5 = new ImageIcon(getClass().getResource("five.png"));
 	Icon die6 = new ImageIcon(getClass().getResource("six.png"));
+	Icon blank = new ImageIcon(getClass().getResource("blank.png")); 
 	JPanel panel = new JPanel(new BorderLayout());
 	JPanel panel1 = new JPanel(new GridLayout(3,1));
 	JPanel panel2 = new JPanel(new GridLayout(3,1)); 
@@ -336,27 +337,32 @@ public class GameFrame extends JFrame implements ActionListener
 		{
 			if(player < 5)
 				{	
-	
+
 					dice1 = roll(); 
 					dice2 = roll2();
 					dice3 = roll3();
 					setIcons();
+					panel6.repaint();
+					panel6.revalidate(); 
+					JOptionPane.showMessageDialog(null, "Player "+ player+ " rolled a "+ dice1+
+													"\nPlayer "+ player+ " rolled a " + dice2+
+													"\nPlayer "+ player+ " rolled a "+ dice3);
+					
+					try
+					{
+					
+						TimeUnit.SECONDS.sleep(1);
+
+					}
+					catch(InterruptedException e)
+					{
+						 System.out.println("Something went wrong");  
+					}	
+
 
 					if(dice1 == rounds && dice2 == rounds && dice3 == rounds)//Bunco
 					{
-						try
-						{
-							
-							TimeUnit.SECONDS.sleep(1);
-							setIcons(); 
-							System.out.println(dice1); 
-							System.out.println(dice2); 
-							System.out.println(dice3); 
-						}
-						catch(InterruptedException e)
-						{
-							 System.out.println("Something went wrong");  
-						}	
+
 
 						if(player == 1)
 						{
@@ -389,19 +395,8 @@ public class GameFrame extends JFrame implements ActionListener
 					{
 
 						if(dice1 == rounds || dice2 == rounds || dice3 == rounds)
-						{
-							try
-							{
-								TimeUnit.SECONDS.sleep(1);
-								System.out.println(dice1); 
-								System.out.println(dice2); 
-								System.out.println(dice3); 
-								setIcons(); 							
-							}
-							catch(InterruptedException e)
-							{
-								 System.out.println("Something went wrong");  
-							}								
+						{	
+														
 							if(player == 1)
 							{
 							
@@ -441,7 +436,8 @@ public class GameFrame extends JFrame implements ActionListener
 							
 						}else
 						{	
-													
+	
+							setIcons();			
 							repaint(); 
 							revalidate();
 							JOptionPane.showMessageDialog(null, "Player " +player+ " is over."); 
