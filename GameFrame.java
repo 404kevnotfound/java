@@ -19,19 +19,15 @@ public class GameFrame extends JFrame implements ActionListener
 	int player1Score;
 	int player1Total; 
 	int player1Bunco; 
-
 	int player2Score; 
 	int player2Total;
 	int player2Bunco; 
-
 	int player3Score; 
 	int player3Total; 
-	int player3Bunco; 
-
+	int player3Bunco;
 	int player4Score; 
 	int player4Total; 
 	int player4Bunco; 
- 
 	int dice1; 
 	int dice2;
 	int dice3;
@@ -67,7 +63,6 @@ public class GameFrame extends JFrame implements ActionListener
 	Icon die4 = new ImageIcon(getClass().getResource("four.png"));
 	Icon die5 = new ImageIcon(getClass().getResource("five.png"));
 	Icon die6 = new ImageIcon(getClass().getResource("six.png"));
-	Icon blank = new ImageIcon(getClass().getResource("blank.png")); 
 	JPanel panel = new JPanel(new BorderLayout());
 	JPanel panel1 = new JPanel(new GridLayout(3,1));
 	JPanel panel2 = new JPanel(new GridLayout(3,1)); 
@@ -79,13 +74,10 @@ public class GameFrame extends JFrame implements ActionListener
 	JPanel panel8 = new JPanel(); 
 	JLabel lab = new JLabel(" ");  
 	JLabel lab2 = new JLabel(); 
-	
 	JLabel score = new JLabel("Your Score"); 
 	JLabel bunco = new JLabel("Buncos"); 
-
 	JLabel lab9 = new JLabel(" "); 
 	JLabel lab10 = new JLabel(" "); 
-  
 	JLabel block3 = new JLabel(die3); 
 	JLabel block2 = new JLabel(die2); 
 	JLabel lab18 = new JLabel("18"); 
